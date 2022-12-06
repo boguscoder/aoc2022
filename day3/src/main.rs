@@ -9,11 +9,11 @@ fn common_item_prio(line: &str) -> i32 {
 
   let common = ruck1.intersection(&ruck2).next().unwrap();
 
-  return match common {
+  match common {
     'a'..='z' => *common as i32 - 97 +1,
     'A'..='Z' => *common as i32 - 65 + 27,
     _ => panic!("wrong input")
-  };
+  }
 }
 
 fn main() {
@@ -23,7 +23,7 @@ fn main() {
 
   {
     // round 1
-    let sum : i32 = contents.split("\n").map(common_item_prio).sum();
+    let sum : i32 = contents.split('\n').map(common_item_prio).sum();
     println!("{}", sum);
   }
 }

@@ -11,7 +11,7 @@ fn main() {
     let elves = contents.split("\n\n");
 
     let max : i32 = elves.map(
-      |elf| elf.split("\n").map(|entry| entry.parse::<i32>().unwrap()).sum()
+      |elf| elf.split('\n').map(|entry| entry.parse::<i32>().unwrap()).sum()
     ).max().unwrap();
     println!("{max}");
   }
@@ -21,7 +21,7 @@ fn main() {
     let elves = contents.split("\n\n");
 
     let mut elven_sums : Vec<i32> = elves.map(
-      |elf| elf.split("\n").map(|entry| entry.parse::<i32>().unwrap()).sum()
+      |elf| elf.split('\n').map(|entry| entry.parse::<i32>().unwrap()).sum()
     ).collect();
     elven_sums.sort();
     elven_sums.reverse();

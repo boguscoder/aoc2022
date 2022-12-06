@@ -18,6 +18,16 @@ fn contains(line: &str) -> u32 {
   0
 } 
 
+fn overlaps(line: &str) -> u32 {
+  let chunks :Vec<&str> = line.split(',').collect();
+  let ranges = [to_range(chunks[0]), to_range(chunks[1])];
+  if (ranges[0][0] <= ranges[1][0] && ranges[0][1] >=ranges[1][0]) ||
+    (ranges[1][0]<= ranges[0][0] && ranges[1][1] >= ranges[0][0]) {
+    return 1;
+  }
+  0
+} 
+
 fn main() {
   let args: Vec<String> = env::args().collect();
   let contents = fs::read_to_string(&args[2])
@@ -25,6 +35,11 @@ fn main() {
   {
     // round 1
     let sum : u32 = contents.split('\n').map(contains).sum();
+    println!("{sum}");
+  }
+  {
+    // round 2
+    let sum : u32 = contents.split('\n').map(overlaps).sum();
     println!("{sum}");
   }
 }
